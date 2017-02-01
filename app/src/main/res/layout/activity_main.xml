@@ -1,17 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="es.aythae.esdlaquiz.MainActivity">
+    <!--android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="es.aythae.esdlaquiz.MainActivity">
 
-    <TextView
+    -->
+
+
+    <ImageView
+        android:id="@+id/backgroundMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/main_background" />
+
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="@dimen/main_menu_width"
+                android:layout_height="@dimen/main_menu_width"
+                android:layout_marginBottom="@dimen/logo_margin_bottom"
+                app:srcCompat="@drawable/app_banner" />
+
+            <Button
+                android:id="@+id/button_play"
+                style="@style/Buttons_menu"
+                android:text="@string/button_play" />
+
+
+            <Button
+                android:id="@+id/button_stats"
+                style="@style/Buttons_menu"
+                android:text="@string/button_stats" />
+
+
+            <Button
+                android:id="@+id/button_others"
+                style="@style/Buttons_menu"
+                android:text="@string/button_others" />
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

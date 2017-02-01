@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ESDLA Quiz</string>
+    <string name="button_play">Jugar</string>
+    <string name="button_stats">Estadísticas</string>
+    <string name="button_others">Juegos similares</string>
+
 </resources>
