@@ -22,19 +22,18 @@ public class Question {
     private String wrongAns1;
     private String wrongAns2;
     private String wrongAns3;
+    private String [] answers = new String[4];
     private String resource;
 
-    public Question() {
-    }
 
     public Question(int id, int type, String question, String correctAns, String wrongAns1, String wrongAns2, String wrongAns3, String resource) {
         this.id = id;
         this.type = QuestionType.values()[type];
         this.question = question;
-        this.correctAns = correctAns;
-        this.wrongAns1 = wrongAns1;
-        this.wrongAns2 = wrongAns2;
-        this.wrongAns3 = wrongAns3;
+        this.correctAns = this.answers[0] = correctAns;
+        this.wrongAns1 = this.answers[1] = wrongAns1;
+        this.wrongAns2 = this.answers[2] = wrongAns2;
+        this.wrongAns3 = this.answers[3] = wrongAns3;
         this.resource = resource;
     }
 
@@ -64,47 +63,38 @@ public class Question {
         return type;
     }
 
-    public void setType(QuestionType type) {
-        this.type = type;
-    }
-
     public String getQuestion() {
         return question;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
 
     public String getCorrectAns() {
         return correctAns;
     }
 
-    public void setCorrectAns(String correctAns) {
-        this.correctAns = correctAns;
+    public String getResource() {
+        return resource;
     }
+
+
+
 
     public String getWrongAns1() {
         return wrongAns1;
     }
 
-    public void setWrongAns1(String wrongAns1) {
-        this.wrongAns1 = wrongAns1;
-    }
 
     public String getWrongAns2() {
         return wrongAns2;
     }
 
-    public void setWrongAns2(String wrongAns2) {
-        this.wrongAns2 = wrongAns2;
-    }
 
     public String getWrongAns3() {
         return wrongAns3;
     }
 
-    public void setWrongAns3(String wrongAns3) {
-        this.wrongAns3 = wrongAns3;
+
+    public String getAnswer(int index){
+        return answers[index];
     }
 }

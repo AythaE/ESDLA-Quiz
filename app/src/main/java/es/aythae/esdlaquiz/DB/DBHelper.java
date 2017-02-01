@@ -50,13 +50,21 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String RESOURCE = "resource_location";
 
 
-    //TODO change to private fields
-    protected Context context;
+    //TODO why to save context?
+    private Context context;
+    private static DBHelper instance = null;
 
-    public DBHelper(Context context) {
+
+    private DBHelper(Context context) {
         super(context, BD_NAME, null, BD_ACTUAL_VERSION);
         this.context = context;
-        //this.open();
+    }
+
+     public static DBHelper getInstance(Context context) {
+         if (instance == null) {
+             instance = new DBHelper(context);
+         }
+        return instance;
     }
 
     @Override
@@ -79,6 +87,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * Populate the SQLiteDatabase with the file /res/raw/database.csv
+     * @param db to be populated
+     */
     private void populateBD(SQLiteDatabase db) {
         Scanner sc = new Scanner(this.context.getResources().openRawResource(R.raw.database));
         ContentValues values = new ContentValues();
