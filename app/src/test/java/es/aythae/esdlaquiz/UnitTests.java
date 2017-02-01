@@ -2,6 +2,11 @@ package es.aythae.esdlaquiz;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
+import es.aythae.esdlaquiz.DB.DBHelper;
+import es.aythae.esdlaquiz.model.Question;
+
 import static org.junit.Assert.*;
 
 /**
@@ -9,9 +14,8 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleUnitTest {
+public class UnitTests {
     @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void empty() throws Exception {
     }
 }
