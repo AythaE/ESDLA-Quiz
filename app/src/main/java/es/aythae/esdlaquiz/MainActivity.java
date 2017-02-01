@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Question> questions = dbHelper.getQuestions();
 
-        Log.d(this.getClass().getSimpleName(), "ReadDB: number of questions: "+questions.size();
+        Log.d(this.getClass().getSimpleName(), "ReadDB: number of questions: "+questions.size());
 
         Questions.setQuestionsList(questions);
     }

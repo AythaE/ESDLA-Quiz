@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:gravity="center"
             android:layout_gravity="center_vertical"
+            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
@@ -35,13 +35,8 @@
 
             <TextView
                 android:id="@+id/question"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp"
-                android:textAlignment="center" />
+                android:text="asdasd"
+                style="@style/Questions" />
 
             <Button
                 android:id="@+id/response_btn1"
@@ -57,7 +52,7 @@
 
             <Button
                 android:id="@+id/response_btn4"
-                style="@style/Buttons_questions"/>
+                style="@style/Buttons_questions" />
 
         </LinearLayout>
     </ScrollView>

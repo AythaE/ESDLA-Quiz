@@ -22,7 +22,7 @@
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/main_background" />
-
+<!-- TODO change the scroll view to match parent as the activity_game.xml-->
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -25,10 +25,23 @@
 
         <item name="android:layout_width">@dimen/main_menu_width</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">20dp</item>
 
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="Questions" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:textAlignment">center</item>
+
     </style>
 </resources>
