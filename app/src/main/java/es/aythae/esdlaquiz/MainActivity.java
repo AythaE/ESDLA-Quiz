@@ -12,13 +12,11 @@
 package es.aythae.esdlaquiz;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 
 import java.util.ArrayList;
@@ -49,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         gameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                GameState.initialize();
                 startActivity(new Intent(MainActivity.this, GameActivity.class));
             }
         });

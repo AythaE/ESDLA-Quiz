@@ -1,7 +1,31 @@
 <resources>
     <string name="app_name">ESDLA Quiz</string>
+
     <string name="button_play">Jugar</string>
     <string name="button_stats">Estadísticas</string>
     <string name="button_others">Juegos similares</string>
+
+    <string name="correct_dialog_title">¡Respuesta Correcta!</string>
+    <!-- TODO Would be nice to have different dialog messages and displaying it randomly-->
+    <string name="correct_dialog_message">Gandalf estaría orgulloso de ti</string>
+    <string name="correct_dialog_button">Continuar</string>
+
+    <string name="wrong_dialog_title">¡Respuesta Incorrecta!</string>
+    <string name="wrong_dialog_message">Con esas respuestas no derrotarás nunca a Sauron y sus esbirros</string>
+    <string name="wrong_dialog_positive_button">Continuar</string>
+    <string name="wrong_dialog_negative_button">Finalizar partida</string>
+
+    <string name="results_dialog_title">Partida finalizada</string>
+    <string name="results_dialog_correct_questions">Respuestas correctas:</string>
+    <string name="results_dialog_wrong_questions">Respuestas falladas:</string>
+    <string name="results_dialog_percent_questions">Porcentaje de acierto:</string>
+    <string name="percent">%</string>
+    <string name="results_dialog_good_result">¡Enhorabuena!, has logrado destruir el anillo y la
+        Tierra Media vuelve a estar en paz.</string>
+    <string name="results_dialog_bad_result">¡Oh no!, el anillo ha caido en manos de Sauron y la Tierra
+        Media ha quedado esclavizada, vuelve a intentarlo más tarde.</string>
+
+    <string name="results_dialog_button">Volver al menú principal</string>
+
 
 </resources>

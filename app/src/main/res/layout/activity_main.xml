@@ -22,16 +22,17 @@
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/main_background" />
-<!-- TODO change the scroll view to match parent as the activity_game.xml-->
+<!-- TODO Banner outside of screen in landscape small devices-->
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -40,7 +41,7 @@
                 android:layout_width="@dimen/main_menu_width"
                 android:layout_height="@dimen/main_menu_width"
                 android:layout_marginBottom="@dimen/logo_margin_bottom"
-                app:srcCompat="@drawable/app_banner" />
+                app:srcCompat="@drawable/app_banner_full_bisel" />
 
             <Button
                 android:id="@+id/button_play"

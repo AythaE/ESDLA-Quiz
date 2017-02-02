@@ -38,7 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public static final String BD_NAME = "ESDLA-Quiz_Questions.db";
-    public static final int BD_ACTUAL_VERSION = 1;
+    public static final int BD_ACTUAL_VERSION = 2;
     public static final String TABLE_NAME = "Questions";
     public static final String ID = "id";
     public static final String TYPE = "type";
