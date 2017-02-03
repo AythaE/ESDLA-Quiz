@@ -27,5 +27,11 @@
 
     <string name="results_dialog_button">Volver al menú principal</string>
 
+    <string name="results_activity_title">Resultados previos</string>
+    <string name="game_date">Fecha: </string>
+
+    <string name="question_row">Pregunta:</string>
+    <string name="response_row">Respuesta correcta:</string>
+
 
 </resources>

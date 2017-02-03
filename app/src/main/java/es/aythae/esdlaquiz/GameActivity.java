@@ -11,15 +11,20 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Random;
 
+import es.aythae.esdlaquiz.adapters.QuestionsAdapter;
+import es.aythae.esdlaquiz.model.Game;
 import es.aythae.esdlaquiz.model.Question;
 import es.aythae.esdlaquiz.model.Questions;
+import es.aythae.esdlaquiz.model.Results;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -29,7 +34,8 @@ public class GameActivity extends AppCompatActivity {
     private TextView questionView;
     private SoundPool soundPool;
     private int correctSound, wrongSound;
-    private Question actualQuestion;
+    private static Question actualQuestion;
+    private static Game gameState;
 
 
     @Override
@@ -54,11 +60,11 @@ public class GameActivity extends AppCompatActivity {
             createOldSoundPool();
         }
 
+        gameState = (Game) getIntent().getSerializableExtra("gameState");
 
         Questions.shuffle();
 
 
-        //TODO a maximum number of questions (15 for example) to finish the game
         loadQuestion();
 
         //TODO print results at the end with the correct answers
@@ -88,6 +94,10 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        printResults();
+    }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void createNewSoundPool() {
@@ -129,6 +139,8 @@ public class GameActivity extends AppCompatActivity {
 
         actualQuestion = Questions.getQuestion();
 
+        gameState.addGameQuestion(actualQuestion.getId());
+
         Log.d(this.getClass().getSimpleName(), "loadQuestion: loading question");
         questionView.setText(actualQuestion.getQuestion());
 
@@ -150,13 +162,25 @@ public class GameActivity extends AppCompatActivity {
         }
 
         if (actualQuestion.getType() == Question.QuestionType.IMAGE) {
-            //TODO Java.outOfMemory, Read https://developer.android.com/training/displaying-bitmaps/index.html 
-            imageView.setImageResource(getResources().getIdentifier("drawable/" + actualQuestion.getResource(), null, getPackageName()));
-            imageView.setVisibility(View.VISIBLE);
-        } else if (actualQuestion.getType() == Question.QuestionType.SOUND) {
-            //TODO use mediaplayer to play sounds and create buttons to control reproduction
-            //TODO Play, stop and reset
+
+            loadQuestionImage();
         }
+        else {
+            //Text type
+            //imageView.setImageResource(R.drawable.no_image);
+            imageView.setVisibility(View.INVISIBLE);
+
+        }
+    }
+
+    /**
+     *
+     */
+    private void loadQuestionImage() {
+
+        imageView.setImageResource(this.getResources().getIdentifier(actualQuestion.getResource(),"drawable",this.getPackageName()));
+        imageView.setVisibility(View.VISIBLE);
+
     }
 
     private void answerSelection(int btnIndex) {
@@ -165,19 +189,17 @@ public class GameActivity extends AppCompatActivity {
         if (correct = answer.equals(actualQuestion.getCorrectAns())) {
             //Correct response
             Log.d(this.getClass().getSimpleName(), "answerSelection: Correct answer");
-            //TODO display a dialog and closeit after the sound has finish
-            GameState.addCorrectAnswer();
+            gameState.addCorrectAnswer();
             playSound(correctSound);
             showAnswerDialog(correct);
 
-            //TODO retrieve a new question and load it
         } else {
             //Wrong response
             Log.d(this.getClass().getSimpleName(), "answerSelection: Wrong answer");
 
             //TODO display a dialog and with the option of quit game and see correct answer
             //TODO or continue till the end and see the correct answers then
-            GameState.addWrongAnswer();
+            gameState.addWrongAnswer();
 
             playSound(wrongSound);
             showAnswerDialog(correct);
@@ -185,7 +207,7 @@ public class GameActivity extends AppCompatActivity {
 
         }
 
-        imageView.setVisibility(View.INVISIBLE);
+
 
         //TODO Save the results
     }
@@ -204,7 +226,7 @@ public class GameActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             soundPool.autoPause();
 
-                            if (GameState.hasGameFinnished()) {
+                            if (gameState.hasGameFinnished()) {
                                 Log.d(this.getClass().getSimpleName(), "Game finished");
                                 printResults();
 
@@ -225,7 +247,7 @@ public class GameActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             soundPool.autoPause();
 
-                            if (GameState.hasGameFinnished()) {
+                            if (gameState.hasGameFinnished()) {
                                 Log.d(this.getClass().getSimpleName(), "Game finished");
                                 printResults();
 
@@ -238,6 +260,8 @@ public class GameActivity extends AppCompatActivity {
                     .setNegativeButton(R.string.wrong_dialog_negative_button, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+                            soundPool.autoPause();
+
                             printResults();
                         }
                     })
@@ -250,12 +274,15 @@ public class GameActivity extends AppCompatActivity {
 
     private void printResults() {
 
+        Results.addNewGame(gameState);
+
+        /*
         StringBuilder sb = new StringBuilder();
 
-        double percent = GameState.getCorrectPercent();
+        double percent = gameState.getCorrectPercent();
 
-        sb.append(getString(R.string.results_dialog_correct_questions) +"\t\t"+ GameState.getCorrectAnswers()+"\n");
-        sb.append(getString(R.string.results_dialog_wrong_questions) +"\t\t\t"+ GameState.getWrongAnswers()+"\n");
+        sb.append(getString(R.string.results_dialog_correct_questions) +"\t\t"+ gameState.getCorrectAnswers()+"\n");
+        sb.append(getString(R.string.results_dialog_wrong_questions) +"\t\t\t"+ gameState.getWrongAnswers()+"\n");
         sb.append(getString(R.string.results_dialog_percent_questions) +"\t\t"+ String.format("%.2f", percent)
                 + getString(R.string.percent)+"\n\n");
         if (percent > 50){
@@ -264,11 +291,41 @@ public class GameActivity extends AppCompatActivity {
         else{
             sb.append(getString(R.string.results_dialog_bad_result));
         }
+*/
+
+        LayoutInflater inflater = ((LayoutInflater) this.getSystemService(this.LAYOUT_INFLATER_SERVICE));
+        View finalDialog = inflater.inflate(R.layout.end_game_dialog, null);
+
+        TextView correctTV = (TextView)finalDialog.findViewById(R.id.preguntas_acertadas_questions);
+        TextView wrongTV = (TextView)finalDialog.findViewById(R.id.preguntas_falladas_questions);
+        TextView percentTV = (TextView)finalDialog.findViewById(R.id.porcentaje_questions);
+        TextView finalMessage = (TextView)finalDialog.findViewById(R.id.final_message_questions);
+
+
+        correctTV.setText(this.getString(R.string.results_dialog_correct_questions) +"\t\t"+ gameState.getCorrectAnswers());
+        wrongTV.setText(this.getString(R.string.results_dialog_wrong_questions) +"\t\t\t"+ gameState.getWrongAnswers());
+
+        double percent = gameState.getCorrectPercent();
+        percentTV.setText(this.getString(R.string.results_dialog_percent_questions) +"\t\t"+ String.format("%.2f", percent)
+                + this.getString(R.string.percent));
+
+        if (percent > 50){
+            finalMessage.setText(this.getString(R.string.results_dialog_good_result));
+        }
+        else{
+            finalMessage.setText(this.getString(R.string.results_dialog_bad_result));
+
+        }
+
+
+        QuestionsAdapter questionsAdapter = new QuestionsAdapter(this, gameState);
+        ListView listView = (ListView) finalDialog.findViewById(R.id.question_list);
+        listView.setAdapter(questionsAdapter);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle(R.string.results_dialog_title)
-                .setMessage(sb.toString())
+                .setView(finalDialog)
                 .setPositiveButton(R.string.results_dialog_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

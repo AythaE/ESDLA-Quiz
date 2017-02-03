@@ -2,5 +2,20 @@ question,correct_answer,wrong_answer1,wrong_answer2,wrong_answer3,type,resource_
 ¿Cuántos anillos de poder reciben los hombres?,9,7,5,13,0,null
 ¿Cuántos anillos de poder reciben los elfos?,3,7,9,5,0,null
 ¿Cuántos anillos de poder reciben los enanos?,7,9,3,13,0,null
-¿Que personaje pronuncia la frase original que escuchamos este remix que se hizo viral en youtube?,Legolas,Aragorn,Boromir,Gandalf,2,taking_the_hobbits_to_isengard
-Erebor "la montaña solitaria" que buscan los enanos en el Hobbit ¿Dónde se encuentra situada en el mapa de la tierra media?,Noreste,Sur,Sureste,Norte,1,middle_earth_map
+Erebor "la montaña solitaria" que buscan los enanos en el Hobbit ¿Dónde se encuentra situada en el mapa de la tierra media?,Noreste,Sur,Sureste,Norte,1,middle_earth_map_low_quality
+¿De donde es rey Aragorn?,Arnor-Gondor,Gondor,Arnor,Gondor-Rohan,0,null
+¿Cómo se llamaba Minas Morgul antes de ser conquistada por el Rey Brujo?,Minas Ithil,Minas Anor,Minas Tirith,Minas Boom,0,null
+¿Cuál es el nombre de la espada de Elendil e Isildur que se ve en la imagen?,Narsil,Anduril,Dardo,Orcrist,1,narsil
+¿Cómo se conoce a Sauron cuando reaparece en Dol Guldur en los alrededores del Bosque Negro?,El Nigromante,El Aborrecido,El Señor oscuro,Melkor,0,null
+¿Cómo se llama el paso donde Frodo y Sam se enfrentan a la criatura de la imagen?,Cirith Ungol,Ephel Dúath,Shelob,Ered Gorgoroth,1,ella_larana
+¿Qué día al alba aparece Gandalf en la batalla del Abismo de Helm?,El quinto,El cuarto,El decimo,El septimo,0,null
+¿Cómo se llamaba el primo de Gollum?,Deagol,Smeagol,Bilbo,Meriadoc,0,null
+¿Cómo se llamaba el caballo de Gandalf?,Sombra gris,Hasufel,Roheryn,Hoja de Viento,0,null
+¿Cuál era el nombre del consejero de Theoden leal a Saruman?,Lengua de serpiente,Lengua de sable,Palantir,Faramir,0,null
+¿Cuál es el feudo más poderoso de Gondor?,Dol Amroth,Lossarnach,Lamedon,Ithilien,0,null
+¿Cuál es la relación de los dos personajes que aparecen en la imagen?,Primos,Hermanos,Amigos,Novios,1,merry_pippin
+¿Qué relación tienen la dama Galadriel y Elrond?,Suegros,Casados,Madre e hijo,Hermanos,0,null
+¿De qué material esta hecha la cota de malla que sujeta Bilbo en la imagen?,Mithril,Titanio,Aluminio,Vorondil,1,mithril
+¿A qué pueblo representa el símbolo que se ve en la imagen?,Gondor,Rohan,Elfos silvanos,Ents,1,gondor_bandera
+¿Comó se llama el personaje del Hobbit que aparece en la imagen?,Azog El profanador,Javat el Ogro Blanco,Gusano gris,Bolgo,1,azog
+¿Con quíen se casó Samsagaz Gamyi al finalizar la aventura del anillo único?,Rosa Coto,Pulgarcita,Elanor Brandigamo,Rosamunda Tuk,0,null

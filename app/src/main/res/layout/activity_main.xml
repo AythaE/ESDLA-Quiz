@@ -6,12 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="es.aythae.esdlaquiz.MainActivity">
-    <!--android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-
-    -->
 
 
     <ImageView
@@ -21,17 +15,16 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/main_background" />
-<!-- TODO Banner outside of screen in landscape small devices-->
+        app:srcCompat="@drawable/main_background_crop" />
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:orientation="vertical">
@@ -41,7 +34,7 @@
                 android:layout_width="@dimen/main_menu_width"
                 android:layout_height="@dimen/main_menu_width"
                 android:layout_marginBottom="@dimen/logo_margin_bottom"
-                app:srcCompat="@drawable/app_banner_full_bisel" />
+                app:srcCompat="@drawable/app_banner_full_bisel_low_quality" />
 
             <Button
                 android:id="@+id/button_play"

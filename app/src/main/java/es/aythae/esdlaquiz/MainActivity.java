@@ -12,6 +12,7 @@
 package es.aythae.esdlaquiz;
 
 import android.content.Intent;
+import android.support.v4.media.MediaBrowserServiceCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,8 +23,10 @@ import android.widget.Button;
 import java.util.ArrayList;
 
 import es.aythae.esdlaquiz.DB.DBHelper;
+import es.aythae.esdlaquiz.model.Game;
 import es.aythae.esdlaquiz.model.Question;
 import es.aythae.esdlaquiz.model.Questions;
+import es.aythae.esdlaquiz.model.Results;
 
 /**
  * asdasdasd
@@ -38,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        readDB();
+        if (Questions.areFilled() == false){
+            readDB();
+        }
+
 
         Button gameBtn = (Button) findViewById(R.id.button_play);
         Button resultsBtn = (Button) findViewById(R.id.button_stats);
@@ -47,8 +53,11 @@ public class MainActivity extends AppCompatActivity {
         gameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GameState.initialize();
-                startActivity(new Intent(MainActivity.this, GameActivity.class));
+                Game newGame = new Game();
+
+                Intent i = new Intent(MainActivity.this, GameActivity.class);
+                i.putExtra("gameState", newGame);
+                startActivity(i);
             }
         });
 

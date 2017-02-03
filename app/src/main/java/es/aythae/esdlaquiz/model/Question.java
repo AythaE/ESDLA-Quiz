@@ -13,7 +13,7 @@ package es.aythae.esdlaquiz.model;
 
 
 public class Question {
-    public enum QuestionType {TEXT, IMAGE, SOUND}
+    public enum QuestionType {TEXT, IMAGE}
 
     private int id;
     private QuestionType type;
