@@ -8,6 +8,8 @@
     <dimen name="question_image_margin_top">20dp</dimen>
     <dimen name="question_padding">10dp</dimen>
     <dimen name="result_pading">10dp</dimen>
+    <dimen name="music_buttons_margin">18dp</dimen>
+    <dimen name="end_game_dialog_padding">25dp</dimen>
 
 
 </resources>

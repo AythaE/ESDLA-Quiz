@@ -289,39 +289,43 @@ public class GameActivity extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, this.getResources().getIdentifier(actualQuestion.getResource(), "raw", this.getPackageName()));
 
         soundButtons.setVisibility(View.VISIBLE);
-        playQuestionSound();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) { }
+                playQuestionSound();
+
+            }
+        }).start();
     }
 
 
     private void playQuestionSound() {
         if (mediaPlayer != null) {
-            playButton.setEnabled(false);
-            pauseButton.setEnabled(true);
-            replayButton.setEnabled(true);
-
-            mediaPlayer.start();
+            if(!mediaPlayer.isPlaying()){
+                mediaPlayer.start();
+            }
         }
     }
 
     private void replayQuestionSound() {
         if (mediaPlayer != null) {
-            mediaPlayer.stop();
-            mediaPlayer.seekTo(0);
-            playButton.setEnabled(false);
-            pauseButton.setEnabled(true);
-            replayButton.setEnabled(true);
+            if(mediaPlayer.isPlaying()) {
+                mediaPlayer.pause();
+            }
+                mediaPlayer.seekTo(0);
+                mediaPlayer.start();
 
-            mediaPlayer.start();
         }
     }
 
     private void pauseQuestionSound() {
         if (mediaPlayer != null) {
-            mediaPlayer.stop();
-            playButton.setEnabled(true);
-            pauseButton.setEnabled(false);
-            replayButton.setEnabled(true);
-
+            if(mediaPlayer.isPlaying()) {
+                mediaPlayer.pause();
+            }
 
         }
     }
@@ -355,9 +359,9 @@ public class GameActivity extends AppCompatActivity {
         String answer = buttons[btnIndex].getText().toString();
         boolean correct;
 
-        if (actualQuestion.getType() == Question.QuestionType.SOUND) {
-            cleanMediaPlayer();
-        }
+
+        cleanMediaPlayer();
+
 
         if (correct = answer.equals(actualQuestion.getCorrectAns())) {
             //Correct response
@@ -459,6 +463,10 @@ public class GameActivity extends AppCompatActivity {
      * save this current gameState in the Results class
      */
     private void printResults() {
+
+
+        cleanMediaPlayer();
+
 
         Results.addNewGame(gameState);
 

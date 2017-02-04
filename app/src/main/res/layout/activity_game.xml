@@ -34,7 +34,7 @@
                 style="@style/Questions_image"/>
             <LinearLayout
                 android:id="@+id/music_buttons"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -44,17 +44,20 @@
                     android:id="@+id/button_play"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/music_buttons_margin"
                     android:src="@android:drawable/ic_media_play"/>
                 <ImageButton
                     android:id="@+id/button_pause"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/music_buttons_margin"
                     android:src="@android:drawable/ic_media_pause"/>
                 <ImageButton
                     android:id="@+id/button_replay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_menu_rotate"/>
+                    android:layout_margin="@dimen/music_buttons_margin"
+                    android:src="@android:drawable/ic_media_previous"/>
             </LinearLayout>
         </RelativeLayout>
 
