@@ -1,40 +1,34 @@
+/*
+ * File: Results.java
+ * Project: ESDLA Quiz
+ *
+ * Author: Aythami Estévez Olivas
+ * Email: aythae[at]gmail[dot]com
+ * Date: 31-ene-2017
+ * Repository: https://github.com/AythaE/ESDLA-Quiz
+ * License: GPL-3.0
+ */
 package es.aythae.esdlaquiz.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 
 /**
- * Created by aythae on 3/02/17.
+ * Class used to store all the game results in memory, it is used to show game statistics. If the
+ * user close the app the stored results are deleted.
  */
-
 public class Results {
 
     private static ArrayList<Game> resultsList = new ArrayList<>();
 
-    public static ArrayList<Game> getResultsList() {
-        return resultsList;
-    }
-
-    public static void setResultsList(ArrayList<Game> _resultsList) {
-        resultsList = _resultsList;
-
-
-
-    }
-
-    public static Game getLastGame(){
-        return resultsList.get(resultsList.size()-1);
-    }
-
-    public static Game getGame(int i){
+    public static Game getGame(int i) {
         return resultsList.get(i);
     }
-    public static void addNewGame(Game game){
+
+    public static void addNewGame(Game game) {
         resultsList.add(game);
     }
 
-    public static int getCount(){
+    public static int getCount() {
         return resultsList.size();
     }
 }

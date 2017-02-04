@@ -12,12 +12,10 @@
 package es.aythae.esdlaquiz;
 
 import android.content.Intent;
-import android.support.v4.media.MediaBrowserServiceCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
 
 import java.util.ArrayList;
@@ -26,14 +24,13 @@ import es.aythae.esdlaquiz.DB.DBHelper;
 import es.aythae.esdlaquiz.model.Game;
 import es.aythae.esdlaquiz.model.Question;
 import es.aythae.esdlaquiz.model.Questions;
-import es.aythae.esdlaquiz.model.Results;
 
 /**
- * asdasdasd
+ * Class that handle the welcome screen of the app. It also read the Database the first time that
+ * this activity is created
  */
 public class MainActivity extends AppCompatActivity {
 
-    private WebView webView= null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (Questions.areFilled() == false){
+        if (!Questions.areFilled()) {
             readDB();
         }
 
@@ -53,8 +50,9 @@ public class MainActivity extends AppCompatActivity {
         gameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Game newGame = new Game();
+                //Create a new game and send it as an extra to the GameActivity
 
+                Game newGame = new Game();
                 Intent i = new Intent(MainActivity.this, GameActivity.class);
                 i.putExtra("gameState", newGame);
                 startActivity(i);
@@ -73,14 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-/*
-                webView = new WebView(MainActivity.this);
-                webView.getSettings().getJavaScriptEnabled();
-                webView.setWebViewClient(new WebViewClient());
-                webView.loadUrl("http://www.juegos.com/juegos/juegos-de-preguntas");
 
-                setContentView(webView);
-*/
                 startActivity(new Intent(MainActivity.this, WebViewActivity.class));
             }
         });
@@ -95,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Question> questions = dbHelper.getQuestions();
 
-        Log.d(this.getClass().getSimpleName(), "ReadDB: number of questions: "+questions.size());
+        Log.d(this.getClass().getSimpleName(), "ReadDB: number of questions: " + questions.size());
 
         Questions.setQuestionsList(questions);
     }

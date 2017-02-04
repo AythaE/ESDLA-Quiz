@@ -6,7 +6,6 @@
     <string name="button_others">Juegos similares</string>
 
     <string name="correct_dialog_title">¡Respuesta Correcta!</string>
-    <!-- TODO Would be nice to have different dialog messages and displaying it randomly-->
     <string name="correct_dialog_message">Gandalf estaría orgulloso de ti</string>
     <string name="correct_dialog_button">Continuar</string>
 

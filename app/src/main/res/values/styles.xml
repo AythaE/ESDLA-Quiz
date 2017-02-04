@@ -8,7 +8,7 @@
         <item name="colorAccent">@android:color/holo_orange_light</item>
     </style>
 
-    <style name="Buttons_menu" >
+    <style name="Buttons_menu">
 
         <item name="android:layout_width">@dimen/main_menu_width</item>
         <item name="android:layout_height">wrap_content</item>
@@ -45,7 +45,7 @@
     <style name="Questions_image">
 
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:visibility">visible</item>
         <item name="android:paddingLeft">@dimen/question_padding</item>
         <item name="android:paddingRight">@dimen/question_padding</item>

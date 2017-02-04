@@ -1,20 +1,34 @@
+/*
+ * File: Game.java
+ * Project: ESDLA Quiz
+ *
+ * Author: Aythami Estévez Olivas
+ * Email: aythae[at]gmail[dot]com
+ * Date: 31-ene-2017
+ * Repository: https://github.com/AythaE/ESDLA-Quiz
+ * License: GPL-3.0
+ */
 package es.aythae.esdlaquiz.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by aythae on 2/02/17.
- */
 
+/**
+ * Class Game that store the state of a single game
+ */
 public class Game implements Serializable {
 
     private int QUESTIONS_PER_GAME;
     private int correctAnswers;
     private int wrongAnswers;
     private Date date;
+    /**
+     * Array that store the ids of this game questions to show the correct answers to the user at
+     * the end
+     */
     private int[] questions;
+    /** Count the number of asked questions */
     private int counter;
 
 
@@ -27,8 +41,12 @@ public class Game implements Serializable {
         counter = 0;
     }
 
-    public boolean hasGameFinnished() {
-        return (correctAnswers + wrongAnswers) >= QUESTIONS_PER_GAME ? true : false;
+    /**
+     * Check if the user has answered a number of QUESTIONS_PER_GAME to set the end of this game
+     * @return true if the user answer QUESTIONS_PER_GAME questions
+     */
+    public boolean hasGameFinished() {
+        return (correctAnswers + wrongAnswers) >= QUESTIONS_PER_GAME;
     }
 
     public int getCorrectAnswers() {
@@ -48,14 +66,27 @@ public class Game implements Serializable {
         this.wrongAnswers++;
     }
 
+    /**
+     * Add a question id to the questions array
+     * @param questionID the id of the asked question
+     */
     public void addGameQuestion(int questionID) {
         if (counter < QUESTIONS_PER_GAME)
             questions[counter++] = questionID;
     }
 
-    public int getCount(){
+    /**
+     * Get the number of asked questions
+     * @return the number of asked questions
+     */
+    public int getCount() {
         return counter;
     }
+
+    /**
+     * Gets the percent of correct answers
+     * @return the percent
+     */
     public double getCorrectPercent() {
         double percent;
         if ((correctAnswers + wrongAnswers) > 0) {

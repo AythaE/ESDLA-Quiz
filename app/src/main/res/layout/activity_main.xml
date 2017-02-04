@@ -16,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/main_background_crop" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

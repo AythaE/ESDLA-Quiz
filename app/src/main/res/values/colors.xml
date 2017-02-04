@@ -4,6 +4,4 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#486d00</color>
 
-    <color name="btnCorrect">#FFD30909</color>
-    <color name="btnWrong">@color/colorPrimary</color>
 </resources>

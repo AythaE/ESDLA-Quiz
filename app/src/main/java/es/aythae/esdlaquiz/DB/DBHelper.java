@@ -19,17 +19,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 import es.aythae.esdlaquiz.R;
 import es.aythae.esdlaquiz.model.Question;
 
 /**
- * Class that handle the SQLite DB
+ * Class that handle the SQLite DB that store the game questions
  *
  * @author aythae
  * @see <a href="http://www.hermosaprogramacion.com/2014/10/android-sqlite-bases-de-datos/">Reference</a>
@@ -37,20 +34,19 @@ import es.aythae.esdlaquiz.model.Question;
 public class DBHelper extends SQLiteOpenHelper {
 
 
-    public static final String BD_NAME = "ESDLA-Quiz_Questions.db";
-    public static final int BD_ACTUAL_VERSION = 7;
-    public static final String TABLE_NAME = "Questions";
-    public static final String ID = "id";
-    public static final String TYPE = "type";
-    public static final String QUESTION = "question";
-    public static final String CORRECT = "correct_answer";
-    public static final String WRONG1 = "wrong_answer1";
-    public static final String WRONG2 = "wrong_answer2";
-    public static final String WRONG3 = "wrong_answer3";
-    public static final String RESOURCE = "resource_location";
+    private static final String BD_NAME = "ESDLA-Quiz_Questions.db";
+    private static final int BD_ACTUAL_VERSION = 1;
+    private static final String TABLE_NAME = "Questions";
+    private static final String ID = "id";
+    private static final String TYPE = "type";
+    private static final String QUESTION = "question";
+    private static final String CORRECT = "correct_answer";
+    private static final String WRONG1 = "wrong_answer1";
+    private static final String WRONG2 = "wrong_answer2";
+    private static final String WRONG3 = "wrong_answer3";
+    private static final String RESOURCE = "resource_location";
 
 
-    //TODO why to save context?
     private Context context;
     private static DBHelper instance = null;
 
@@ -60,10 +56,15 @@ public class DBHelper extends SQLiteOpenHelper {
         this.context = context;
     }
 
-     public static DBHelper getInstance(Context context) {
-         if (instance == null) {
-             instance = new DBHelper(context);
-         }
+    /**
+     * Method to recover the single instance of this class, necessary for the Singleton pattern
+     * @param context context for the creation of this class
+     * @return the instance of this class
+     */
+    public static DBHelper getInstance(Context context) {
+        if (instance == null) {
+            instance = new DBHelper(context);
+        }
         return instance;
     }
 
@@ -82,13 +83,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 RESOURCE + " TEXT)");
 
 
-
         populateBD(db);
 
     }
 
     /**
      * Populate the SQLiteDatabase with the file /res/raw/database.csv
+     *
      * @param db to be populated
      */
     private void populateBD(SQLiteDatabase db) {
