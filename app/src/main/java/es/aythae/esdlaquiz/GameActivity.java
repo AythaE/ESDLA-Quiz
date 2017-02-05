@@ -283,6 +283,11 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Load the sound of a sound-type question by instantiating a MediaPlayer with that song, show
+     * the buttons to control the sound playback and start the playback of the sound after a second
+     * (due to the needed time to load the UI)
+     */
     private void loadQuestionSound() {
         Log.d(this.getClass().getSimpleName(), "loadQuestionSound: loading sound");
 
@@ -302,6 +307,10 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Play the sound loaded in the actual MediaPlayer, this method is invoked when the user clicks
+     * the play button
+     */
     private void playQuestionSound() {
         if (mediaPlayer != null) {
             if(!mediaPlayer.isPlaying()){
@@ -310,6 +319,10 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Replay from the beggining the sound loaded in the actual MediaPlayer, this method is invoked
+     * when the user clicks the replay button
+     */
     private void replayQuestionSound() {
         if (mediaPlayer != null) {
             if(mediaPlayer.isPlaying()) {
@@ -321,6 +334,10 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Pause the sound loaded in the actual MediaPlayer, this method is invoked when the user clicks
+     * the Pause button
+     */
     private void pauseQuestionSound() {
         if (mediaPlayer != null) {
             if(mediaPlayer.isPlaying()) {
@@ -330,6 +347,10 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Clean the mediaPlayer stoping the current sound, releasing it resources and setting it to
+     * null
+     */
     private void cleanMediaPlayer() {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
@@ -513,9 +534,14 @@ public class GameActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Clean the soundPool stopping the current sound, releasing it resources and setting it to
+     * null
+     */
     private void cleanSoundPool() {
         if (soundPool != null) {
-            soundPool.autoPause();
+            soundPool.stop(correctSound);
+            soundPool.stop(wrongSound);
 
             soundPool.release();
             soundPool = null;
